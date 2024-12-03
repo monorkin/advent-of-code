@@ -24,4 +24,8 @@ defmodule AdventOfCode.Utils do
   def unwrap_or_return({:error, _}, return), do: return
 
   def unwrap_or_return(value, _), do: value
+
+  def scan(input, regex, options \\ []) do
+    Regex.scan(regex, input, options)
+  end
 end
