@@ -3,10 +3,15 @@
 Solutions are in `/lib/advent_of_code/day*.ex` files.
 Each solution has a corresponding test in `/test/advent_of_code/day*_test.exs` file.
 
-Inputs, including examples, are in `/prive/inputs/day*` directories.
-Provided examples are always named `example-{number}.txt` while any additional examples are named `example-*.txt`.
+Inputs, including examples, are in `/priv/inputs/day*` directories.
 
-If the puzzle uses the same input, or the same example, for both parts then just one file - the first one - is provided.
+Provided examples are always named `example-{number}.txt` (e.g. `example-1.txt`) 
+while any additional examples are named `example-*.txt` (e.g. `example-edgecase.txt`.
+
+Inputs are always named `input-{number}.txt` (e.g. `input-1.txt`).
+
+If the puzzle uses the same input, or the same example, for both parts then 
+just one file - the first one - is provided.
 
 ## Solutions
 
