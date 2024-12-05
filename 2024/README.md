@@ -62,3 +62,15 @@ AdventOfCode.Day4.find_all_occurances_of_xmas(input)
 AdventOfCode.Day4.find_all_occurances_of_mas_in_the_shape_of_an_x(input)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 5:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day5/input-1.txt")
+
+AdventOfCode.Day5.sum_of_correct_middle_pages(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day5.sum_of_corrected_middle_pages(input)
+|> IO.inspect(label: "Part 2")
+```

@@ -1,6 +1,11 @@
 defmodule AdventOfCode.Utils do
   def break_into_rows(input), do: String.split(input, "\n", trim: true)
 
+  def break_into_rows(input, true) do
+    String.split(input, "\n")
+    |> Enum.map(&String.trim/1)
+  end
+
   def sum(list), do: Enum.sum(list)
 
   def convert_rows_to_integers(rows) do
