@@ -15,24 +15,28 @@ defmodule AdventOfCode.Day6 do
     |> parse_map()
     |> simulate_patrol()
     |> find_potential_loop_locations()
-    |> select_loops()
+    |> select_obstacles_that_form_loops()
     |> length()
   end
 
   defp find_potential_loop_locations({map, guard, state}) do
+    {gx, gy, _} = state.initial_guard
+
     potential_loop_obsticle_locations =
       state.path
+      |> Enum.reverse()
       |> Enum.map(fn {x, y, _} ->
         {x, y}
       end)
       |> Enum.uniq()
+      |> Enum.reject(fn {x, y} -> gx == x && gy == y end)
 
     {map, guard, state, potential_loop_obsticle_locations}
   end
 
-  defp select_loops({map, _guard, initial_state, potential_loop_obsticle_locations}) do
-    IO.puts("Found #{length(potential_loop_obsticle_locations)} potential loop locations")
-
+  defp select_obstacles_that_form_loops(
+         {map, _guard, initial_state, potential_loop_obsticle_locations}
+       ) do
     potential_loop_obsticle_locations
     |> Task.async_stream(
       fn {x, y} ->
@@ -40,10 +44,8 @@ defmodule AdventOfCode.Day6 do
           simulate_patrol({mark_map(map, {x, y}, :obstacle), initial_state.initial_guard})
 
         if state.loop do
-          IO.puts("Found loop with obstacle at (#{x}, #{y})")
           {x, y}
         else
-          IO.puts("No loop with obstacle at (#{x}, #{y})")
           nil
         end
       end,
