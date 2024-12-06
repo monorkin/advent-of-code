@@ -19,36 +19,6 @@ defmodule AdventOfCode.Day6 do
     |> length()
   end
 
-  # Tried to be smart here and detect crossings as they are the most likely places that a loop would occur
-  # The problem with crossings is that there can be loops that don't start at a crossing
-  # A loop could start by placing an obstacle on the guards path forcing it to turn and enter a trap
-  #
-  # defp find_potential_loop_locations({map, guard, state}) do
-  #   potential_loop_obsticle_locations =
-  #     state.path
-  #     |> Enum.frequencies_by(fn {x, y, _} -> {x, y} end)
-  #     |> Enum.filter(fn {_, count} -> count > 1 end)
-  #     |> Enum.flat_map(fn {{x, y}, _} ->
-  #       Enum.filter(state.path, fn {px, py, _} -> px == x && py == y end)
-  #     end)
-  #     |> Enum.map(fn {x, y, h} ->
-  #       case take_step(map, {x, y}, h) do
-  #         {:ok, {nx, ny, _}} -> {nx, ny}
-  #         _ -> nil
-  #       end
-  #     end)
-  #     |> Enum.reject(&is_nil/1)
-  #
-  #   {lx, ly, _} =
-  #     List.first(state.path)
-  #
-  #   potential_loop_obsticle_locations =
-  #     [{lx, ly} | potential_loop_obsticle_locations]
-  #
-  #   {map, guard, state, potential_loop_obsticle_locations}
-  # end
-
-  # Brute force solutions that checks every possible location in the path
   defp find_potential_loop_locations({map, guard, state}) do
     potential_loop_obsticle_locations =
       state.path
@@ -71,13 +41,9 @@ defmodule AdventOfCode.Day6 do
 
         if state.loop do
           IO.puts("Found loop with obstacle at (#{x}, #{y})")
-
-          # state.patrol_map
-          # |> mark_map({x, y}, :mark)
-          # |> print_map(state.initial_guard)
-
-          {x, y, state.path}
+          {x, y}
         else
+          IO.puts("No loop with obstacle at (#{x}, #{y})")
           nil
         end
       end,
@@ -86,12 +52,12 @@ defmodule AdventOfCode.Day6 do
     |> Stream.filter(&match?({:ok, value} when not is_nil(value), &1))
     |> Stream.map(fn {:ok, value} -> value end)
     |> Enum.to_list()
-    |> Enum.uniq_by(fn {_, _, path} -> path end)
   end
 
-  defp count_visited_tiles({_, _, %{patrol_map: patrol_map}}) do
-    patrol_map
-    |> Enum.flat_map(&Enum.filter(&1, fn {_, _, tile} -> tile == :visited end))
+  defp count_visited_tiles({_, _, %{path: path}}) do
+    path
+    |> Enum.map(fn {x, y, _} -> {x, y} end)
+    |> Enum.uniq()
     |> Enum.count()
   end
 
@@ -139,7 +105,6 @@ defmodule AdventOfCode.Day6 do
     state =
       state
       |> Map.update(:path, [], fn p -> [guard | p] end)
-      |> Map.put(:patrol_map, mark_map(state.patrol_map, {guard_x, guard_y}, :visited))
 
     # Take a step in the direction the guard is facing
     case take_step(map, {guard_x, guard_y}, heading) do
@@ -256,27 +221,5 @@ defmodule AdventOfCode.Day6 do
       "<" -> {-1, 0}
       _ -> raise "Invalid guard direction '#{inspect(guard)}'"
     end
-  end
-
-  defp print_map(map, {gx, gy, _gh}) do
-    grid =
-      Enum.map(map, fn row ->
-        Enum.map(row, fn {x, y, tile} ->
-          cond do
-            gx == x and gy == y -> "G"
-            tile == :guard -> "I"
-            tile == :obstacle -> "#"
-            tile == :empty -> "."
-            tile == :visited -> "X"
-            tile == :mark -> "O"
-            true -> "?"
-          end
-        end)
-        |> Enum.join()
-      end)
-      |> Enum.join("\n")
-
-    IO.puts("------------")
-    IO.puts(grid)
   end
 end
