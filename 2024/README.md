@@ -74,3 +74,15 @@ AdventOfCode.Day5.sum_of_correct_middle_pages(input)
 AdventOfCode.Day5.sum_of_corrected_middle_pages(input)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 6:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day6/input-1.txt")
+
+AdventOfCode.Day6.count_distinctive_guard_patrol_positions(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day6.fun(input)
+|> IO.inspect(label: "Part 2")
+```
