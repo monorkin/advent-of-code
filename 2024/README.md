@@ -83,6 +83,18 @@ Day 6:
 AdventOfCode.Day6.count_distinctive_guard_patrol_positions(input)
 |> IO.inspect(label: "Part 1")
 
-AdventOfCode.Day6.fun(input)
+AdventOfCode.Day6.count_possible_object_locations_that_cause_a_loop(input)
+|> IO.inspect(label: "Part 2")
+```
+
+Day 7:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day7/input-1.txt")
+
+AdventOfCode.Day6.find_total_calibration_result(input, false)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day6.find_total_calibration_result(input, true)
 |> IO.inspect(label: "Part 2")
 ```
