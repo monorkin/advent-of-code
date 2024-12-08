@@ -3,6 +3,9 @@
 Solutions are in `/lib/advent_of_code/day*.ex` files.
 Each solution has a corresponding test in `/test/advent_of_code/day*_test.exs` file.
 
+Each solution module contains the text of the puzzle for that day as a comment.
+Solutions sometimes contain also explanatory comments for "clever" solutions.
+
 Inputs, including examples, are in `/priv/inputs/day*` directories.
 
 Provided examples are always named `example-{number}.txt` (e.g. `example-1.txt`) 
@@ -92,9 +95,21 @@ Day 7:
 ```elixir
 {:ok, input} = File.read("priv/inputs/day7/input-1.txt")
 
-AdventOfCode.Day6.find_total_calibration_result(input, false)
+AdventOfCode.Day7.find_total_calibration_result(input, false)
 |> IO.inspect(label: "Part 1")
 
-AdventOfCode.Day6.find_total_calibration_result(input, true)
+AdventOfCode.Day7.find_total_calibration_result(input, true)
+|> IO.inspect(label: "Part 2")
+```
+
+Day 8:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day8/input-1.txt")
+
+AdventOfCode.Day8.antinodes_count_without_harmonics(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day8.antinodes_count_with_harmonics(input)
 |> IO.inspect(label: "Part 2")
 ```

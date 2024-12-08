@@ -33,4 +33,10 @@ defmodule AdventOfCode.Utils do
   def scan(input, regex, options \\ []) do
     Regex.scan(regex, input, options)
   end
+
+  def sign(n) when n > 0, do: 1
+
+  def sign(n) when n < 0, do: -1
+
+  def sign(_), do: 0
 end
