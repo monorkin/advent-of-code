@@ -39,4 +39,34 @@ defmodule AdventOfCode.Utils do
   def sign(n) when n < 0, do: -1
 
   def sign(_), do: 0
+
+  def find_last(list, matcher) do
+    case _find_last(list, matcher, length(list) - 1) do
+      {elem, _} -> elem
+      _ -> nil
+    end
+  end
+
+  def find_last_index(list, matcher) do
+    _find_last(list, matcher, length(list) - 1)
+  end
+
+  defp _find_last(_list, _matcher, i) when i < 0, do: nil
+
+  defp _find_last(list, matcher, i) do
+    elem = Enum.at(list, i)
+
+    if matcher.(elem) do
+      {elem, i}
+    else
+      _find_last(list, matcher, i - 1)
+    end
+  end
+
+  def find_index(list, matcher) do
+    case Enum.find_index(list, matcher) do
+      nil -> nil
+      i -> {Enum.at(list, i), i}
+    end
+  end
 end

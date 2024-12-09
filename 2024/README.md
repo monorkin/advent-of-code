@@ -113,3 +113,15 @@ AdventOfCode.Day8.antinodes_count_without_harmonics(input)
 AdventOfCode.Day8.antinodes_count_with_harmonics(input)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 9:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day9/input-1.txt")
+
+AdventOfCode.Day9.fs_checksum_after_compaction(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day9.fs_checksum_after_defragmentation(input)
+|> IO.inspect(label: "Part 2")
+```
