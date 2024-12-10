@@ -69,4 +69,25 @@ defmodule AdventOfCode.Utils do
       i -> {Enum.at(list, i), i}
     end
   end
+
+  def parse_grid(input, converter \\ & &1) do
+    input
+    |> break_into_rows()
+    |> Enum.with_index()
+    |> Enum.reduce(%{}, fn {row, y}, acc ->
+      row
+      |> String.graphemes()
+      |> Enum.with_index()
+      |> Enum.reduce(acc, fn {cell, x}, acc ->
+        acc
+        |> Map.put({x, y}, converter.(cell))
+      end)
+    end)
+  end
+
+  def grid_dimensions(grid) do
+    width = grid |> Map.keys() |> Enum.map(&elem(&1, 0)) |> Enum.max()
+    height = grid |> Map.keys() |> Enum.map(&elem(&1, 1)) |> Enum.max()
+    {width, height}
+  end
 end

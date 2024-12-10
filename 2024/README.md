@@ -125,3 +125,15 @@ AdventOfCode.Day9.fs_checksum_after_compaction(input)
 AdventOfCode.Day9.fs_checksum_after_defragmentation(input)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 10:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day10/input-1.txt")
+
+AdventOfCode.Day10.calculate_sum_of_trailhead_scores(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day10.calculate_sum_of_trailhead_ratings(input)
+|> IO.inspect(label: "Part 2")
+```
