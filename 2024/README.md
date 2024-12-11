@@ -137,3 +137,15 @@ AdventOfCode.Day10.calculate_sum_of_trailhead_scores(input)
 AdventOfCode.Day10.calculate_sum_of_trailhead_ratings(input)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 11:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day11/input-1.txt")
+
+AdventOfCode.Day11.count_stone_arrangements_after(input, 25)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day11.count_stone_arrangements_after(input, 75)
+|> IO.inspect(label: "Part 2")
+```

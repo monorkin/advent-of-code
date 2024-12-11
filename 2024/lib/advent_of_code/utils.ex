@@ -6,6 +6,12 @@ defmodule AdventOfCode.Utils do
     |> Enum.map(&String.trim/1)
   end
 
+  def break_into_row_of(string, converter \\ & &1) do
+    string
+    |> String.split(" ", trim: true)
+    |> Enum.map(fn elem -> elem |> String.trim() |> converter.() end)
+  end
+
   def sum(list), do: Enum.sum(list)
 
   def convert_rows_to_integers(rows) do
