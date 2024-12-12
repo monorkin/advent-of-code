@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day4Test do
+defmodule AdventOfCode.Day04Test do
   use ExUnit.Case
 
   test "finds all the XMAS strings in the grid" do
@@ -15,7 +15,7 @@ defmodule AdventOfCode.Day4Test do
     MXMXAXMASX
     """
 
-    assert(AdventOfCode.Day4.find_all_occurances_of_xmas(input) == 18)
+    assert(AdventOfCode.Day04.find_all_occurances_of_xmas(input) == 18)
   end
 
   test "finds all the MAS strings in the shape of an X" do
@@ -32,6 +32,6 @@ defmodule AdventOfCode.Day4Test do
     MXMXAXMASX
     """
 
-    assert(AdventOfCode.Day4.find_all_occurances_of_mas_in_the_shape_of_an_x(input) == 9)
+    assert(AdventOfCode.Day04.find_all_occurances_of_mas_in_the_shape_of_an_x(input) == 9)
   end
 end

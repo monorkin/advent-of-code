@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day7 do
+defmodule AdventOfCode.Day07 do
   import AdventOfCode.Utils
 
   # --- Day 7: Bridge Repair ---

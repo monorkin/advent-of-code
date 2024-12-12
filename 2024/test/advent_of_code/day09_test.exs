@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day9Test do
+defmodule AdventOfCode.Day09Test do
   use ExUnit.Case
 
   test "correctly calculates the filesystem checksum after compaction" do
@@ -6,7 +6,7 @@ defmodule AdventOfCode.Day9Test do
     2333133121414131402
     """
 
-    assert(AdventOfCode.Day9.fs_checksum_after_compaction(input) == 1928)
+    assert(AdventOfCode.Day09.fs_checksum_after_compaction(input) == 1928)
   end
 
   test "correctly calculates the filesystem checksum after defragmentation" do
@@ -14,6 +14,6 @@ defmodule AdventOfCode.Day9Test do
     2333133121414131402
     """
 
-    assert(AdventOfCode.Day9.fs_checksum_after_defragmentation(input) == 2858)
+    assert(AdventOfCode.Day09.fs_checksum_after_defragmentation(input) == 2858)
   end
 end

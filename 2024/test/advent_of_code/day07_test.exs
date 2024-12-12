@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day7Test do
+defmodule AdventOfCode.Day07Test do
   use ExUnit.Case
 
   test "correctly finds the total calibration result" do
@@ -14,7 +14,7 @@ defmodule AdventOfCode.Day7Test do
     292: 11 6 16 20
     """
 
-    assert(AdventOfCode.Day7.find_total_calibration_result(input, false) == 3749)
+    assert(AdventOfCode.Day07.find_total_calibration_result(input, false) == 3749)
   end
 
   test "correctly finds the total calibration result with concatenations enabled" do
@@ -30,6 +30,6 @@ defmodule AdventOfCode.Day7Test do
     292: 11 6 16 20
     """
 
-    assert(AdventOfCode.Day7.find_total_calibration_result(input, true) == 11387)
+    assert(AdventOfCode.Day07.find_total_calibration_result(input, true) == 11387)
   end
 end

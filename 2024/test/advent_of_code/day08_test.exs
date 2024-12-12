@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day8Test do
+defmodule AdventOfCode.Day08Test do
   use ExUnit.Case
 
   test "correctly finds and counts all anti-nodes without harmonics" do
@@ -15,7 +15,7 @@ defmodule AdventOfCode.Day8Test do
     ..........
     """
 
-    assert(AdventOfCode.Day8.antinodes_count_without_harmonics(input) == 4)
+    assert(AdventOfCode.Day08.antinodes_count_without_harmonics(input) == 4)
 
     input = """
     ............
@@ -32,7 +32,7 @@ defmodule AdventOfCode.Day8Test do
     ............
     """
 
-    assert(AdventOfCode.Day8.antinodes_count_without_harmonics(input) == 14)
+    assert(AdventOfCode.Day08.antinodes_count_without_harmonics(input) == 14)
   end
 
   test "correctly finds and counts all anti-nodes with harmonics" do
@@ -51,6 +51,6 @@ defmodule AdventOfCode.Day8Test do
     ............
     """
 
-    assert(AdventOfCode.Day8.antinodes_count_with_harmonics(input) == 34)
+    assert(AdventOfCode.Day08.antinodes_count_with_harmonics(input) == 34)
   end
 end

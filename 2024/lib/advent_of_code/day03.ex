@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day3 do
+defmodule AdventOfCode.Day03 do
   import AdventOfCode.Utils
 
   @uncurrupted_muls_regex ~r/mul\((\d{1,3}),(\d{1,3})\)/

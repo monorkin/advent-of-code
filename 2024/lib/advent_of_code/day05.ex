@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day5 do
+defmodule AdventOfCode.Day05 do
   import AdventOfCode.Utils
 
   # --- Day 5: Print Queue ---

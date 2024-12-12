@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day5Test do
+defmodule AdventOfCode.Day05Test do
   use ExUnit.Case
 
   test "calculates the sum of middle pages of correct updates correctly" do
@@ -33,7 +33,7 @@ defmodule AdventOfCode.Day5Test do
     97,13,75,29,47
     """
 
-    assert(AdventOfCode.Day5.sum_of_correct_middle_pages(input) == 143)
+    assert(AdventOfCode.Day05.sum_of_correct_middle_pages(input) == 143)
   end
 
   test "calculates the sum of middle pages of corrected updates correctly" do
@@ -68,6 +68,6 @@ defmodule AdventOfCode.Day5Test do
     97,13,75,29,47
     """
 
-    assert(AdventOfCode.Day5.sum_of_corrected_middle_pages(input) == 123)
+    assert(AdventOfCode.Day05.sum_of_corrected_middle_pages(input) == 123)
   end
 end

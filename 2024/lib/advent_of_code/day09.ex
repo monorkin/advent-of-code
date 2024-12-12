@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day9 do
+defmodule AdventOfCode.Day09 do
   import AdventOfCode.Utils
 
   # --- Day 9: Disk Fragmenter ---

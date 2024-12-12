@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day8 do
+defmodule AdventOfCode.Day08 do
   import AdventOfCode.Utils
 
   # --- Day 8: Resonant Collinearity ---

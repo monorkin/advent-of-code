@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day2 do
+defmodule AdventOfCode.Day02 do
   import AdventOfCode.Utils
 
   # --- Day 2: Red-Nosed Reports ---

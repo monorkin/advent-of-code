@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day2Test do
+defmodule AdventOfCode.Day02Test do
   use ExUnit.Case
 
   test "calculates the number of safe reports correctly" do
@@ -11,7 +11,7 @@ defmodule AdventOfCode.Day2Test do
     1 3 6 7 9
     """
 
-    assert(assert AdventOfCode.Day2.count_safe_reports(input, false) == 2)
+    assert(assert AdventOfCode.Day02.count_safe_reports(input, false) == 2)
   end
 
   test "calculates the number of safe reports with the problem dampener correctly" do
@@ -24,6 +24,6 @@ defmodule AdventOfCode.Day2Test do
     1 3 6 7 9
     """
 
-    assert AdventOfCode.Day2.count_safe_reports(input, true) == 4
+    assert AdventOfCode.Day02.count_safe_reports(input, true) == 4
   end
 end

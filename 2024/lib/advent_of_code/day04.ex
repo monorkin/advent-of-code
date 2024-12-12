@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day4 do
+defmodule AdventOfCode.Day04 do
   import AdventOfCode.Utils
 
   @xmas_regex ~r/XMAS/

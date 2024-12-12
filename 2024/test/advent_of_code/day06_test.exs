@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day6Test do
+defmodule AdventOfCode.Day06Test do
   use ExUnit.Case
 
   test "correctly counts the number of distinctive guard patrol positions" do
@@ -15,7 +15,7 @@ defmodule AdventOfCode.Day6Test do
     ......#...
     """
 
-    assert(AdventOfCode.Day6.count_distinctive_guard_patrol_positions(input) == 41)
+    assert(AdventOfCode.Day06.count_distinctive_guard_patrol_positions(input) == 41)
   end
 
   test "correctly counts the number of possible obstacle locations that cause a loop" do
@@ -32,6 +32,6 @@ defmodule AdventOfCode.Day6Test do
     ......#...
     """
 
-    assert(AdventOfCode.Day6.count_possible_object_locations_that_cause_a_loop(input) == 6)
+    assert(AdventOfCode.Day06.count_possible_object_locations_that_cause_a_loop(input) == 6)
   end
 end

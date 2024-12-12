@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day1 do
+defmodule AdventOfCode.Day01 do
   import AdventOfCode.Utils
 
   #  --- Day 1: Historian Hysteria ---

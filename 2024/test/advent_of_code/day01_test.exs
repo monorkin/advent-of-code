@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day1Test do
+defmodule AdventOfCode.Day01Test do
   use ExUnit.Case
 
   test "calculates the total distance correctly" do
@@ -11,7 +11,7 @@ defmodule AdventOfCode.Day1Test do
     3   3
     """
 
-    assert AdventOfCode.Day1.calculate_total_distance(input) == 11
+    assert AdventOfCode.Day01.calculate_total_distance(input) == 11
   end
 
   test "calculates the similarity score correctly" do
@@ -24,6 +24,6 @@ defmodule AdventOfCode.Day1Test do
     3   3
     """
 
-    assert AdventOfCode.Day1.calculate_similarity_score(input) == 31
+    assert AdventOfCode.Day01.calculate_similarity_score(input) == 31
   end
 end

@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day10Test do
+defmodule AdventOfCode.Day11Test do
   use ExUnit.Case
 
   test "correctly counts stone arrangements after 25 blinks" do

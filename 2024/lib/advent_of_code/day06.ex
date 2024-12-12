@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day6 do
+defmodule AdventOfCode.Day06 do
   import AdventOfCode.Utils
 
   # --- Day 6: Guard Gallivant ---
