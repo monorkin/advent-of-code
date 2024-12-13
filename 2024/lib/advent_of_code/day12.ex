@@ -146,6 +146,66 @@ defmodule AdventOfCode.Day12 do
   # Adding these together produces its new total price of 1206.
   #
   # What is the new total price of fencing all regions on your map?
+  #
+  # --- Part Two ---
+  #
+  # Fortunately, the Elves are trying to order so much fence that they qualify for a bulk discount!
+  #
+  # Under the bulk discount, instead of using the perimeter to calculate the price, you need to use the number of sides each region has. Each straight section of fence counts as a side, regardless of how long it is.
+  #
+  # Consider this example again:
+  #
+  # AAAA
+  # BBCD
+  # BBCC
+  # EEEC
+  #
+  # The region containing type A plants has 4 sides, as does each of the regions containing plants of type B, D, and E. However, the more complex region containing the plants of type C has 8 sides!
+  #
+  # Using the new method of calculating the per-region price by multiplying the region's area by its number of sides, regions A through E have prices 16, 16, 32, 4, and 12, respectively, for a total price of 80.
+  #
+  # The second example above (full of type X and O plants) would have a total price of 436.
+  #
+  # Here's a map that includes an E-shaped region full of type E plants:
+  #
+  # EEEEE
+  # EXXXX
+  # EEEEE
+  # EXXXX
+  # EEEEE
+  #
+  # The E-shaped region has an area of 17 and 12 sides for a price of 204. Including the two regions full of type X plants, this map has a total price of 236.
+  #
+  # This map has a total price of 368:
+  #
+  # AAAAAA
+  # AAABBA
+  # AAABBA
+  # ABBAAA
+  # ABBAAA
+  # AAAAAA
+  #
+  # It includes two regions full of type B plants (each with 4 sides) and a single region full of type A plants (with 4 sides on the outside and 8 more sides on the inside, a total of 12 sides). Be especially careful when counting the fence around regions like the one full of type A plants; in particular, each section of fence has an in-side and an out-side, so the fence does not connect across the middle of the region (where the two B regions touch diagonally). (The Elves would have used the Möbius Fencing Company instead, but their contract terms were too one-sided.)
+  #
+  # The larger example from before now has the following updated prices:
+  #
+  #     A region of R plants with price 12 * 10 = 120.
+  #     A region of I plants with price 4 * 4 = 16.
+  #     A region of C plants with price 14 * 22 = 308.
+  #     A region of F plants with price 10 * 12 = 120.
+  #     A region of V plants with price 13 * 10 = 130.
+  #     A region of J plants with price 11 * 12 = 132.
+  #     A region of C plants with price 1 * 4 = 4.
+  #     A region of E plants with price 13 * 8 = 104.
+  #     A region of I plants with price 14 * 16 = 224.
+  #     A region of M plants with price 5 * 6 = 30.
+  #     A region of S plants with price 3 * 6 = 18.
+  #
+  # Adding these together produces its new total price of 1206.
+  #
+  # What is the new total price of fencing all regions on your map?
+  #
+  # Your puzzle answer was 821428.
 
   def calculate_total_fencing_price(input, apply_bulk_discount) do
     input
@@ -159,9 +219,76 @@ defmodule AdventOfCode.Day12 do
   end
 
   defp calculate_sides({map, meta}) do
-    sides = %{}
+    sides =
+      meta.regions
+      |> Enum.reduce(%{}, fn {region, coords}, acc ->
+        map =
+          Enum.reduce(coords, %{}, fn coord, map ->
+            Map.put(map, coord, :occupied)
+          end)
+
+        coords
+        |> Enum.sort_by(fn {x, y} -> {y, x} end)
+        |> Enum.reduce({acc, map, 0}, fn {x, y}, {acc, map, next_id} ->
+          north_coord = {x, y - 1}
+          north = Map.get(map, north_coord, %{})
+
+          east_coord = {x + 1, y}
+          east = Map.get(map, east_coord, %{})
+
+          south_coord = {x, y + 1}
+          south = Map.get(map, south_coord, %{})
+
+          west_coord = {x - 1, y}
+          west = Map.get(map, west_coord, %{})
+
+          {map, next_id} = assign_side(map, north_coord, north, :south, next_id)
+          {map, next_id} = assign_side(map, east_coord, east, :west, next_id)
+          {map, next_id} = assign_side(map, south_coord, south, :north, next_id)
+          {map, next_id} = assign_side(map, west_coord, west, :east, next_id)
+
+          {Map.put(acc, region, next_id), map, next_id}
+        end)
+        |> elem(0)
+      end)
 
     {map, Map.put(meta, :sides, sides)}
+  end
+
+  defp assign_side(map, _coord, :occupied, _side, next_id), do: {map, next_id}
+
+  defp assign_side(map, {x, y} = coord, assigns, side, next_id) do
+    assigns = assigns || %{north: nil, east: nil, south: nil, west: nil}
+
+    neighbour_coords =
+      case side do
+        :north -> [{x - 1, y}, {x + 1, y}]
+        :south -> [{x - 1, y}, {x + 1, y}]
+        :east -> [{x, y - 1}, {x, y + 1}]
+        :west -> [{x, y - 1}, {x, y + 1}]
+      end
+
+    neighbout_id =
+      neighbour_coords
+      |> Enum.reduce(nil, fn coord, acc ->
+        if acc do
+          acc
+        else
+          Map.get(map, coord, nil)
+          |> case do
+            nas when is_map(nas) -> Map.get(nas, side, nil)
+            _ -> nil
+          end
+        end
+      end)
+
+    if neighbout_id do
+      assigns = Map.put(assigns, side, neighbout_id)
+      {Map.put(map, coord, assigns), next_id}
+    else
+      assigns = Map.put(assigns, side, next_id)
+      {Map.put(map, coord, assigns), next_id + 1}
+    end
   end
 
   defp calculate_price({_map, meta}, apply_bulk_discount) do
