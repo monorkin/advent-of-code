@@ -161,3 +161,15 @@ AdventOfCode.Day12.calculate_total_fencing_price(input, false)
 AdventOfCode.Day12.calculate_total_fencing_price(input, true)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 13:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day13/input-1.txt")
+
+AdventOfCode.Day13.find_fewest_number_of_tokens_needed_to_win_all_prizes(input, 0)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day13.find_fewest_number_of_tokens_needed_to_win_all_prizes(input, 10_000_000_000_000)
+|> IO.inspect(label: "Part 2")
+```
