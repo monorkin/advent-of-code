@@ -173,3 +173,32 @@ AdventOfCode.Day13.find_fewest_number_of_tokens_needed_to_win_all_prizes(input, 
 AdventOfCode.Day13.find_fewest_number_of_tokens_needed_to_win_all_prizes(input, 10_000_000_000_000)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 14:
+
+```elixir
+
+{:ok, input} = File.read("priv/inputs/day13/input-1.txt")
+
+AdventOfCode.Day14.calculate_safety_factor_after(input, {101, 103}, 100)
+|> IO.inspect(label: "Part 1")
+
+# Part 2 is a bit tricky. You have to look at the output of part 1
+# for the first 200 seconds. Not down the time when you see a vertical
+# pattern and the time when you see a horizontal pattern. All the robots
+# will cluster around the center of the grid and form a line.
+# In my case the first horizontal line appears at 31 seconds and the
+# first vertical line appears at 68 seconds. The horizontal lines repeat
+# every 103 seconds and the vertical lines repeat every 101 seconds - the
+# size of the grid.
+# So we have 2 equations now:
+#   31 + 103X = Y
+#   68 + 101Z = Q
+# To solve this we have to find where these two lines intersect.
+# at their multiple. So we have to find the least common multiple of 103 
+# and 101 - which is 10403 - and find the first common integer solution
+# lower than 10403.
+# In my case that was 7138.
+AdventOfCode.Day14.calculate_safety_factor_after(input, {101, 103}, 7138)
+|> IO.inspect(label: "Part 2")
+```
