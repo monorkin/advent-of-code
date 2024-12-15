@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day13Test do
+defmodule AdventOfCode.Day14Test do
   use ExUnit.Case
 
   test "correctly calculates the saftey factor after 100s" do

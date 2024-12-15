@@ -40,6 +40,10 @@ defmodule AdventOfCode.Utils do
     Regex.scan(regex, input, options)
   end
 
+  def replace(input, regex, replacement, options \\ []) do
+    Regex.replace(regex, input, replacement, options)
+  end
+
   def sign(n) when n > 0, do: 1
 
   def sign(n) when n < 0, do: -1

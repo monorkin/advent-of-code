@@ -202,3 +202,15 @@ AdventOfCode.Day14.calculate_safety_factor_after(input, {101, 103}, 100)
 AdventOfCode.Day14.calculate_safety_factor_after(input, {101, 103}, 7138)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 15:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day15/input-1.txt")
+
+AdventOfCode.Day15.sum_of_gps_coordinates(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day15.sum_of_expanded_gps_coordinates(input)
+|> IO.inspect(label: "Part 2")
+```
