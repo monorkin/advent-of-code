@@ -214,3 +214,15 @@ AdventOfCode.Day15.sum_of_gps_coordinates(input)
 AdventOfCode.Day15.sum_of_expanded_gps_coordinates(input)
 |> IO.inspect(label: "Part 2")
 ```
+
+Day 16:
+
+```elixir
+{:ok, input} = File.read("priv/inputs/day16/input-1.txt")
+
+AdventOfCode.Day16.find_best_scoring_path(input)
+|> IO.inspect(label: "Part 1")
+
+AdventOfCode.Day16.number_of_tiles_along_the_best_paths(input)
+|> IO.inspect(label: "Part 2")
+```
