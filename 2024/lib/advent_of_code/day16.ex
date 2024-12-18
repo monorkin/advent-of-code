@@ -387,35 +387,35 @@ defmodule AdventOfCode.Day16 do
     }
   end
 
-  defp draw_path(state, path) do
-    coords = state.map |> Enum.map(&elem(&1, 0))
-    width = coords |> Enum.map(&elem(&1, 0)) |> Enum.max()
-    height = coords |> Enum.map(&elem(&1, 1)) |> Enum.max()
-
-    for y <- 0..height do
-      for x <- 0..width do
-        coord = {x, y}
-        tile = Map.get(state.map, coord)
-
-        cond do
-          coord == state.start ->
-            IO.write("S")
-
-          coord == state.finish ->
-            IO.write("E")
-
-          tile == :wall ->
-            IO.write("#")
-
-          coord in path ->
-            IO.write(IO.ANSI.red() <> "o" <> IO.ANSI.reset())
-
-          true ->
-            IO.write(" ")
-        end
-      end
-
-      IO.puts("")
-    end
-  end
+  # defp draw_path(state, path) do
+  #   coords = state.map |> Enum.map(&elem(&1, 0))
+  #   width = coords |> Enum.map(&elem(&1, 0)) |> Enum.max()
+  #   height = coords |> Enum.map(&elem(&1, 1)) |> Enum.max()
+  #
+  #   for y <- 0..height do
+  #     for x <- 0..width do
+  #       coord = {x, y}
+  #       tile = Map.get(state.map, coord)
+  #
+  #       cond do
+  #         coord == state.start ->
+  #           IO.write("S")
+  #
+  #         coord == state.finish ->
+  #           IO.write("E")
+  #
+  #         tile == :wall ->
+  #           IO.write("#")
+  #
+  #         coord in path ->
+  #           IO.write(IO.ANSI.red() <> "o" <> IO.ANSI.reset())
+  #
+  #         true ->
+  #           IO.write(" ")
+  #       end
+  #     end
+  #
+  #     IO.puts("")
+  #   end
+  # end
 end
